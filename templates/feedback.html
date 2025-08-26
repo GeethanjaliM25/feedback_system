@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Feedback</title>
+</head>
+<body>
+    <h2>Feedback for {{ username }}</h2>
+    <form method="POST">
+        <textarea name="message" placeholder="Enter your feedback here..." required></textarea><br><br>
+        <input type="submit" value="Submit Feedback">
+    </form>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <ul>
+        {% for category, message in messages %}
+          <li style="color: {{ 'green' if category == 'success' else 'red' }}">{{ message }}</li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+</body>
+</html>
+
